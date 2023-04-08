@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+			<!-- Bootstrap CSS -->
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+			<!-- jQuery library -->
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+			<!-- Bootstrap JS -->
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<style>
+.my-div {
+  border-radius: 16px;
+  border: 1px solid black;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+
+/* Style the text elements */
+.my-text {
+  margin-bottom: 8px;
+}
+
+/* Style the first row */
+.first-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Style the second row */
+.second-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+		header{
+			text-align:center;
+		}
+
+		body{
+			text-align: center;
+		}
+
+	</style>
+	<title>My Bookings</title>
+</head>
+<body>
+	<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+		<h1 class="navbar-brand">My Bookings</h1>
+		<a href="{{url_for('main.dashboard')}}" class="navbar-link">Go to Dashboard</a>
+	</nav>
+	{% for booking in bookings %}
+	<div class="my-div">
+		<div class="first-row">
+			<div class="my-text">{{ shows[booking.id].title }}</div>
+			<div class="my-text">Ticket Count: {{ booking.count }}</div>
+			<a class="btn btn-outline-primary" href="{{url_for('main.rating_get', show_id=booking.show_id)}}">Rate</a>
+	  	</div>
+	</div>
+	{% endfor %}
+</body>
+</html>

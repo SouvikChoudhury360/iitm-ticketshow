@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SignUp</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- Bootstrap JS -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="jumbotron text-center">
+		<h2>SignUp</h2>`
+        <a class="navbar-brand" href="{{ url_for('auth.login') }}"
+        >Already have an account ? Click here to Login !</a>
+	  </div>
+	<div class="container" style="text-align:center;">
+		<form method="POST" action="/signup">
+			<div class="form-group">
+                <label for="email">Email:</label>
+				<input type="email" class="form-control" name="email">
+                <label for="username">Name:</label>
+				<input type="text" class="form-control" name="name">
+				<label for="password">Password:</label>
+				<input type="password" class="form-control" id="password" name="password">
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+	</div>
+</body>
+</html>

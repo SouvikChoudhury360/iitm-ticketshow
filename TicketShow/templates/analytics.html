@@ -1,0 +1,45 @@
+<!DOCTYPE>
+<html>
+<head>
+    <style>
+        body{
+			text-align: center;
+            align-items: center;
+		}
+        canvas{
+            margin: 0 auto;
+        }
+    </style>
+   <meta charset- "UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <title>chart.js</title>
+</head>
+<body>
+    <h1>Analytics for {{show.title}}</h1>
+   <canvas id="chartId" aria-label="chart" height="350" width="580"></canvas>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.1.1/chart.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.1.1/helpers.esm.min.js">
+   </script>
+   <script>
+    let data = JSON.parse('{{ rating_list | tojson }}');
+    console.log(data)
+      var chrt = document.getElementById("chartId").getContext("2d");
+      var chartId = new Chart(chrt, {
+         type: 'bar',
+         data: {
+            labels: ["1Star", "2Star", "3Star", "4Star", "5Star",],
+            datasets: [{
+               label: "Ratings bar chart",
+               data: [data[0], data[1], data[2], data[3], data[4]],
+               backgroundColor: ['yellow', 'aqua', 'pink', 'lightgreen', 'lightblue',],
+               borderColor: ['red', 'blue', 'fuchsia', 'green', 'navy',],
+               borderWidth: 2,
+            }],
+         },
+         options: {
+            responsive: false,
+         },
+      });
+   </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Create Venue</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- Bootstrap JS -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="jumbotron text-center">
+		<h2>Create Venue</h2>`
+        <a class="navbar-brand" href="{{ url_for('main.adminDashboard') }}"
+        >See all already created venues here</a>
+	  </div>
+	<div class="container" style="text-align:center;">
+		<form method="POST" action="/createVenue">
+			<div class="form-group">
+                <label for="name">Name:</label>
+				<input type="text" class="form-control" name="name">
+                <label for="address">Address:</label>
+				<input type="text" class="form-control" name="address">
+				<label for="capacity">Capacity:</label>
+				<input type="number" class="form-control" name="capacity">
+			</div>
+			<button type="submit" class="btn btn-primary">Create</button>
+		</form>
+	</div>
+</body>
+</html>

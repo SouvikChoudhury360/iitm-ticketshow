@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Booking</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- Bootstrap JS -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="jumbotron text-center">
+		<h2>Book Ticket for {{show.title}}</h2>`
+        <a class="navbar-brand" href="{{ url_for('main.dashboard') }}"
+        >See all shows here</a>
+		<div>Seats Left: {{show.capacity}}</div>
+	  </div>
+	<div class="container" style="text-align:center;">
+		<form method="POST" action="/booking/{{show.id}}">
+			<div class="form-group">
+                <label for="count">Ticket Count:</label>
+				<input type="number" class="form-control" name="count" max="{{show.capacity}}" min="1">
+                <div>Per Ticket Price: {{show.ticket_price}}</div>
+			</div>
+			<button type="submit" class="btn btn-primary">Book</button>
+		</form>
+	</div>
+</body>
+</html>

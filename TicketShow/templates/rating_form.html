@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rating</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- Bootstrap JS -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="jumbotron text-center">
+		<h2>Rate {{show.title}}</h2>`
+        <a class="navbar-brand" href="{{ url_for('main.dashboard') }}"
+        >See all shows here</a>
+	  </div>
+	<div class="container" style="text-align:center;">
+		<form method="POST" action="/rating/{{show.id}}">
+			<div class="form-group">
+                <label for="rating">Your Rating:  [Rate between 1 and 5]</label>
+				<input type="number" class="form-control" name="rating" min="1" max="5">
+			</div>
+			<button type="submit" class="btn btn-primary">Rate</button>
+		</form>
+	</div>
+</body>
+</html>
