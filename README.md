@@ -80,47 +80,28 @@ Move to this folder for all other commands.
 
 <br>
 
-### 3️⃣ Set it up :arrow_up:
+### 2️⃣ Set it up :arrow_up:
 
 You'll need the following dependencies : <br/>
 
-Node JS <a href="https://nodejs.org/en/download/">here</a> <br/>
-Truffle
+Python <a href="https://www.python.org/downloads/">here</a> <br/>
+Flask
 ```sh
-$ npm install -g truffle
-
+$ pip install flask
 ```
-Download ganache from 
-<a href="https://github.com/trufflesuite/ganache/releases/download/v2.5.4/Ganache-2.5.4-win-x64.appx">here</a>
-
-Run the following commands to see that *your local copy* has a reference to *your forked remote repository* in Github :octocat:
-
-```sh
-$ git remote -v
-origin  https://github.com/Your_Username/syndicater.git (fetch)
-origin  https://github.com/Your_Username/syndicater.git (push)
-```
-Now, lets add a reference to the original [syndicater](https://github.com/arghya1912/syndicater) repository using
-
-```sh
-$ git remote add upstream https://github.com/arghya1912/syndicater.git
-```
-
-> This adds a new remote named ***upstream***.
-
-See the changes using
-
-```sh
-$ git remote -v
-origin    https://github.com/Your_Username/syndicater.git (fetch)
-origin    https://github.com/Your_Username/syndicater.git (push)
-upstream  https://github.com/arghya1912/syndicater.git (fetch)
-upstream https://github.com/arghya1912/syndicater.git![syndicater](https://user-images.githubusercontent.com/71402528/114308981-4df45f00-9b03-11eb-9928-8028aaf2bd15.jpg)
-/syndicater.git (push)
-```
-
 <br>
 
+### 3️⃣ Running the application :turtle: :rabbit2: :
+
+After moving into the iitm-ticketshow diractory and installing the required dependencies, run the following commands in shell to run the application in your local machine.
+
+```sh
+# This will set up the flask variable
+$ export FLASK_APP=TicketShow
+
+# This will spin up the local development server
+$ flask run
+```
 
 <br>
 
