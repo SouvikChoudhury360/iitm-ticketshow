@@ -2,7 +2,7 @@
 
 <h2> An online show tickets booking web application </h2>
 
- ## Video Demonstration 
+ <h2 align="center"> Video Demonstration </h2> 
  
  <h2 align="center" id="content"> 🗂 CONTENTS : </h2>
 
