@@ -11,10 +11,9 @@
 ```
 > `📌` [Tech Stacks (we used)](#TechStack)<br>
 >> `📌` [Features](#Features)<br>
->>> `📌` [How to get started](#Howtogetstarted?)<br>
->>>> `📌` [Steps to follow ](#Stepstofollow)<br>
->>>>> `📌` [Developed By](#DevelopedBy)<br>
->>>>>> `📌` [Thank you note](#TimetoSayGoodBye)<br>
+>>> `📌` [Steps to follow ](#Stepstofollow)<br>
+>>>> `📌` [Developed By](#DevelopedBy)<br>
+>>>>> `📌` [Thank you note](#TimetoSayGoodBye)<br>
 ```diff
  # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 ```
@@ -53,6 +52,75 @@
 
 
 <i><p align="center"><a href="#content">⬆️ CLICK HERE TO GO BACK TO CONTENTS</a></p></i><br>
+
+<br>
+
+<h2 align="center" id="Stepstofollow"> ⭐ Steps that are to be followed :scroll:</h2>
+
+<br>
+
+### 1️⃣ Clone it :busts_in_silhouette:
+
+You need to clone (download) it to local machine using
+
+```sh
+$ git clone https://github.com/SouvikChoudhury360/iitm-ticketshow.git
+```
+
+> This makes a local copy of repository in your machine.
+
+Once you have cloned the `iitm-ticketshow` repository from Github, move to that folder first using change directory command on linux terminal.
+
+```sh
+# This will change directory to a folder  
+$ cd iitm-ticketshow
+```
+
+Move to this folder for all other commands.
+
+<br>
+
+### 3️⃣ Set it up :arrow_up:
+
+You'll need the following dependencies : <br/>
+
+Node JS <a href="https://nodejs.org/en/download/">here</a> <br/>
+Truffle
+```sh
+$ npm install -g truffle
+
+```
+Download ganache from 
+<a href="https://github.com/trufflesuite/ganache/releases/download/v2.5.4/Ganache-2.5.4-win-x64.appx">here</a>
+
+Run the following commands to see that *your local copy* has a reference to *your forked remote repository* in Github :octocat:
+
+```sh
+$ git remote -v
+origin  https://github.com/Your_Username/syndicater.git (fetch)
+origin  https://github.com/Your_Username/syndicater.git (push)
+```
+Now, lets add a reference to the original [syndicater](https://github.com/arghya1912/syndicater) repository using
+
+```sh
+$ git remote add upstream https://github.com/arghya1912/syndicater.git
+```
+
+> This adds a new remote named ***upstream***.
+
+See the changes using
+
+```sh
+$ git remote -v
+origin    https://github.com/Your_Username/syndicater.git (fetch)
+origin    https://github.com/Your_Username/syndicater.git (push)
+upstream  https://github.com/arghya1912/syndicater.git (fetch)
+upstream https://github.com/arghya1912/syndicater.git![syndicater](https://user-images.githubusercontent.com/71402528/114308981-4df45f00-9b03-11eb-9928-8028aaf2bd15.jpg)
+/syndicater.git (push)
+```
+
+<br>
+
 
 <br>
 
