@@ -14,9 +14,11 @@ def index():
 @login_required
 def dashboard():
     venues = venue.query.all()
-
     shows = []
-    for thisvenue in range(1,100):
+    latest = 0
+    for thisvenue in venues:
+        latest = max(latest, thisvenue.id)
+    for thisvenue in range(1,latest+1):
         showList = show.query.filter_by(venue_id=thisvenue)
         shows.append(showList)
     return render_template('dashboard.html', user=current_user, venues = venues, shows = shows)
@@ -64,6 +66,14 @@ def editVenue(venue_id):
 @login_required
 def deleteVenue(venue_id):
     thisvenue = venue.query.get_or_404(venue_id)
+    shows_list = show.query.all()
+    bookings_list = bookings.query.all()
+    for thisshow in shows_list:
+        if thisshow.venue_id == thisvenue.id:
+            for thisbooking in bookings_list:
+                if thisbooking.show_id == thisshow.id:
+                    db.session.delete(thisbooking)
+            db.session.delete(thisshow)
     db.session.delete(thisvenue)
     db.session.commit()
     return redirect(url_for('main.adminDashboard'))
@@ -92,6 +102,10 @@ def createShow(venue_id):
 @login_required
 def deleteShow(show_id):
     thisshow = show.query.get_or_404(show_id)
+    bookings_list = bookings.query.all()
+    for thisbooking in bookings_list:
+        if thisbooking.show_id == thisshow.id:
+            db.session.delete(thisbooking)
     db.session.delete(thisshow)
     db.session.commit()
     return redirect(url_for('main.adminDashboard'))
@@ -113,11 +127,13 @@ def editShow(show_id):
     return render_template('edit_show.html', show=thisshow, venue=thisvenue)
 
 @main.route('/booking/<int:show_id>', methods=['GET'])
+@login_required
 def booking_get(show_id):
     thisshow = show.query.filter_by(id=show_id).first()
     return render_template('booking.html', show=thisshow)
 
 @main.route('/booking/<int:show_id>', methods=['POST'])
+@login_required
 def booking_post(show_id):
     count = request.form.get('count')
     new_booking = bookings(show_id=show_id, count=int(count), user_id=int(current_user.id))
@@ -131,6 +147,7 @@ def booking_post(show_id):
     return redirect(url_for('main.dashboard'))
 
 @main.route('/mybookings', methods= ['GET'])
+@login_required
 def mybookings():
     bookingsList = bookings.query.filter_by(user_id=current_user.id)
     showlist = {}
@@ -140,6 +157,7 @@ def mybookings():
     return render_template('my_bookings.html', bookings=bookingsList, shows=showlist)
 
 @main.route('/rating/<int:show_id>', methods=['POST'])
+@login_required
 def rating_post(show_id):
     rating = request.form.get('rating')
     new_rating = ratings(show_id=show_id, rating=int(rating), user_id=int(current_user.id))
@@ -148,6 +166,7 @@ def rating_post(show_id):
     return redirect(url_for('main.dashboard'))
 
 @main.route('/rating/<int:show_id>', methods=['GET'])
+@login_required
 def rating_get(show_id):
     thisshow = show.query.filter_by(id=show_id).first()
     ratings_list = ratings.query.filter_by(show_id=thisshow.id)
@@ -158,6 +177,7 @@ def rating_get(show_id):
 
 
 @main.route('/analytics/<int:show_id>', methods=['GET'])
+@login_required
 def analytics(show_id):
     thisshow = show.query.filter_by(id=show_id).first()
     ratings_list = ratings.query.all()
@@ -169,14 +189,24 @@ def analytics(show_id):
     return render_template('analytics.html', rating_list=rating_list, show=thisshow)
 
 @main.route('/search', methods=['GET'])
+@login_required
 def search_landing_screen():
     show_list = show.query.all()
     return render_template('search_shows.html',shows= show_list)
 
 @main.route('/search/shows', methods=['GET', 'POST'])
+@login_required
 def search_shows():
     search_text = request.form['show_search']
     search = "%{}%".format(search_text)
     showlist = show.query.filter(show.title.like(search)).all()
     showtags = show.query.filter(show.tags.like(search)).all()
-    return render_template('search_shows.html',shows= showlist, showtags=showtags)
+    finallist = showlist
+    for newshow in showtags:
+        exists = False
+        for thisshow in finallist:
+            if thisshow.id == newshow.id:
+                exists = True
+        if exists == False:
+            finallist.append(newshow)
+    return render_template('search_shows.html',shows= finallist)

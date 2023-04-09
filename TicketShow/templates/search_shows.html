@@ -64,19 +64,5 @@
         </div>
 	</div>
 	{% endfor %}
-	{% for show in showtags %}
-	<div class="my-div">
-		<div class="row">
-			<div class="my-text">{{ show.title }}</div>
-			<div class="my-text">{{ show.startint_time }} to {{ show.ending_time }}</div>
-			<div class="my-text">Seats Left: {{ show.capacity }}</div>
-	  	</div>
-      <div class="row">
-        <div class="my-text">Ticket Price: ₹{{ show.ticket_price }}</div>
-        <div class="my-text"><a href="{{ url_for('main.booking_get', show_id=show.id) }}" class="btn btn-outline-primary">Book</a></div>
-        <div class="my-text">{{ show.tags }}</div>
-        </div>
-	</div>
-	{% endfor %}
 </body>
 </html>
