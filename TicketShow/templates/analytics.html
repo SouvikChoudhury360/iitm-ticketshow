@@ -1,10 +1,17 @@
 <!DOCTYPE>
 <html>
 <head>
+     	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- Bootstrap JS -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <style>
         body{
+         background-color: aliceblue;
 			text-align: center;
-            align-items: center;
+         align-items: center;
 		}
         canvas{
             margin: 0 auto;
@@ -12,24 +19,24 @@
     </style>
    <meta charset- "UTF-8" />
    <meta name="viewport" content="width=device-width, initial-scale=1" />
-   <title>chart.js</title>
+   <title>Analytics {{show.title}}</title>
 </head>
 <body>
     <h1>Analytics for {{show.title}}</h1>
-   <canvas id="chartId" aria-label="chart" height="350" width="580"></canvas>
+   <canvas class="container" id="chartId" aria-label="chart" height="600" width="850"></canvas>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.1.1/chart.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.1.1/helpers.esm.min.js">
    </script>
    <script>
     let data = JSON.parse('{{ rating_list | tojson }}');
     console.log(data)
-      var chrt = document.getElementById("chartId").getContext("2d");
-      var chartId = new Chart(chrt, {
+      var chart = document.getElementById("chartId").getContext("2d");
+      var chartId = new Chart(chart, {
          type: 'bar',
          data: {
             labels: ["1Star", "2Star", "3Star", "4Star", "5Star",],
             datasets: [{
-               label: "Ratings bar chart",
+               label: "Ratings Count",
                data: [data[0], data[1], data[2], data[3], data[4]],
                backgroundColor: ['yellow', 'aqua', 'pink', 'lightgreen', 'lightblue',],
                borderColor: ['red', 'blue', 'fuchsia', 'green', 'navy',],

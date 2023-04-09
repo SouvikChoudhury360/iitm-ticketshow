@@ -9,35 +9,38 @@
 			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	<style>
 		.single{
-			width: 40px;
 			margin: auto;
 		}
-.my-div {
-  border-radius: 16px;
-  border: 1px solid black;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  margin: 20px;
-}
+		.bottom{
+			margin-bottom: 100px;
+		}
+		.my-div {
+			background-color: aliceblue;
+  			border-radius: 16px;
+  			border: 1px solid black;
+  			padding: 24px;
+  			display: flex;
+  			flex-direction: column;
+  			margin: 20px;
+		}
 
-/* Style the text elements */
-.my-text {
-  margin-bottom: 8px;
-}
+		.my-div-outer {
+			background-color: #f6f7ff;
+  			border-radius: 16px;
+  			border: 1px solid black;
+  			padding: 24px;
+  			display: flex;
+  			flex-direction: column;
+  			margin: 20px;
+		}
+		.my-text {
+			margin: 4px;
+		}
 
-/* Style the first row */
-.first-row {
-  display: flex;
-  justify-content: space-between;
-}
-
-/* Style the second row */
-.second-row {
-  display: flex;
-  justify-content: space-between;
-}
-
+		.row {
+  			display: flex;
+  			justify-content: space-between;
+		}
 		header{
 			text-align:center;
 		}
@@ -53,33 +56,33 @@
 		<h1>Admin Dashboard</h1>
 	</header>
 	{% for venue in venues %}
-	<div class="my-div">
-		<div class="first-row">
-			<div class="my-text">{{ venue.name }}</div>
+	<div class="my-div-outer">
+		<div class="row">
+			<div class="font-weight-bold my-text">{{ venue.name }}</div>
 			<div class="my-text">{{ venue.address }}</div>
 			<div class="my-text">Capacity: {{ venue.capacity }}</div>
 	  	</div>
-		<div class="second-row">
+		<div class="row">
 			<a href="{{ url_for('main.editVenue', venue_id=venue.id) }}" class="btn btn-outline-primary my-text">Edit</a>
 			<a href="{{ url_for('main.deleteVenue', venue_id=venue.id) }}" class="btn btn-outline-primary my-text">Delete</a>
 		</div>
 		{% for show in shows[venue.id-1] %}
 		<div class="my-div">
-		<div class="second-row">
-			<div class="my-text">{{ show.title }}</div>
+		<div class="row">
+			<div class="font-weight-bold my-text">{{ show.title }}</div>
 			<div class="my-text">{{ show.starting_time }} to {{ show.ending_time }}</div>
 			<div class="my-text">{{ show.tags }}</div>
 		</div>
-		<div class="second-row">
+		<div class="row">
 			<a href="{{ url_for('main.editShow', show_id=show.id) }}" class="btn btn-outline-primary my-text">Edit</a>
 			<a href="{{ url_for('main.analytics', show_id=show.id) }}" class="btn btn-outline-primary my-text">Analytics</a>
 			<a href="{{ url_for('main.deleteShow', show_id=show.id) }}" class="btn btn-outline-primary my-text">Delete</a>
 		</div>
 		</div>
 		{% endfor %}
-		<a href="{{ url_for('main.createShow', venue_id=venue.id) }}" class="btn btn-primary single">+</a>
+		<a href="{{ url_for('main.createShow', venue_id=venue.id) }}" class="btn btn-outline-primary single">Create Show at {{ venue.name }}</a>
 	</div>
 	{% endfor %}
-	<a href="{{ url_for('main.createVenue') }}" class="btn btn-primary single">+</a>
+	<a href="{{ url_for('main.createVenue') }}" class="btn btn-outline-primary single bottom">Create Venue</a>
 </body>
 </html>

@@ -16,8 +16,8 @@ def dashboard():
     venues = venue.query.all()
 
     shows = []
-    for thisvenue in venues:
-        showList = show.query.filter_by(venue_id=thisvenue.id)
+    for thisvenue in range(1,100):
+        showList = show.query.filter_by(venue_id=thisvenue)
         shows.append(showList)
     return render_template('dashboard.html', user=current_user, venues = venues, shows = shows)
 
@@ -26,8 +26,8 @@ def dashboard():
 def adminDashboard():
     venues = venue.query.all()
     shows = []
-    for thisvenue in venues:
-        showList = show.query.filter_by(venue_id=thisvenue.id)
+    for thisvenue in range(1,100):
+        showList = show.query.filter_by(venue_id=thisvenue)
         shows.append(showList)
     return render_template('admin_dashboard.html', venues = venues, shows = shows)
 

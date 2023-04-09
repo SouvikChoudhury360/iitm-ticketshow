@@ -9,13 +9,27 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <style>
+		.box{
+			padding: 24px;
+			background-color: aliceblue;
+			border-radius: 24px;
+			border: 1px solid black;
+		}
+		.cyan{
+			background-color: aliceblue;
+		}
+		.body{
+			background-color: #f6f7ff;		
+		}
+	</style>
 </head>
 <body>
-  <div class="jumbotron text-center">
+  <div class="jumbotron text-center cyan">
     <h1>Welcome to TicketShow</h1>
     <p>This is a Flask Application that implements the features like adding venues, adding shows, buying tickets for the shows, rating the shows, and analytics of the reviews.</p>
   </div>
-  <div class="container">
+  <div class="container box">
     <div class="row">
       <div class="col-sm-4" style="text-align:center">
         <h3>User Login</h3>
